@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Emergency Preparedness System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Family Emergency Preparedness System</h1>
+    </header>
+    <main>
+        <section id="emergencies">
+            <h2>Emergencies</h2>
+            <div class="dropdown">
+                <button class="dropbtn" onclick="toggleDropdown('disasterDropdown')">Disaster Emergencies</button>
+                <div id="disasterDropdown" class="dropdown-content">
+                    <div class="disaster" onclick="toggleChecklist('earthquake')">
+                        <img src="earthquake.png" alt="Earthquake">
+                        <p>Earthquake</p>
+                    </div>
+                    <div class="disaster" onclick="toggleChecklist('fire')">
+                        <img src="fire.png" alt="Fire">
+                        <p>Fire</p>
+                    </div>
+                    <div class="disaster" onclick="toggleChecklist('flood')">
+                        <img src="flood.png" alt="Flood">
+                        <p>Flood</p>
+                    </div>
+                    <div class="disaster" onclick="toggleChecklist('hurricane')">
+                        <img src="hurricane.png" alt="Hurricane">
+                        <p>Hurricane</p>
+                    </div>
+                    <div class="disaster" onclick="toggleChecklist('tornado')">
+                        <img src="tornado.png" alt="Tornado">
+                        <p>Tornado</p>
+                    </div>
+                    <div class="disaster" onclick="toggleChecklist('winter_storm')">
+                        <img src="winter_storm.png" alt="Winter Storm">
+                        <p>Winter Storm</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn" onclick="toggleDropdown('medicalDropdown')">Medical Emergencies</button>
+                <div id="medicalDropdown" class="dropdown-content">
+                    <div class="medical" onclick="toggleMedicalChecklist('first_aid')">
+                        <img src="first_aid.png" alt="First Aid">
+                        <p>First Aid</p>
+                    </div>
+                    <div class="medical" onclick="toggleMedicalChecklist('choking')">
+                        <img src="choking.png" alt="Choking">
+                        <p>Choking</p>
+                    </div>
+                    <div class="medical" onclick="toggleMedicalChecklist('bleeding')">
+                        <img src="bleeding.png" alt="Bleeding">
+                        <p>Bleeding</p>
+                    </div>
+                    <div class="medical" onclick="toggleMedicalChecklist('burns')">
+                        <img src="burns.png" alt="Burns">
+                        <p>Burns</p>
+                    </div>
+                    <div class="medical" onclick="toggleMedicalChecklist('fractures')">
+                        <img src="fractures.png" alt="Fractures">
+                        <p>Fractures</p>
+                    </div>
+                    <div class="medical" onclick="toggleMedicalChecklist('allergic_reaction')">
+                        <img src="allergic_reaction.png" alt="Allergic Reaction">
+                        <p>Allergic Reaction</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div id="checklist" class="checklist">
+            <h3>Checklist</h3>
+            <div class="checklist-container">
+                <ul id="checklist-items"></ul>
+            </div>
+            <button onclick="saveChecklist()">Save Selected Actions</button>
+        </div>
+        <div id="selected-items-container" class="selected-items-container">
+            <h3>Selected Items</h3>
+            <ul id="selected-items"></ul>
+        </div>
+
+        <div id="medical-checklist" class="checklist">
+            <h3>Medical Checklist</h3>
+            <div class="checklist-container">
+                <ul id="medical-checklist-items"></ul>
+            </div>
+            <button onclick="saveMedicalChecklist()">Save Selected Actions</button>
+        </div>
+        <div id="selected-medical-items-container" class="selected-items-container">
+            <h3>Selected Medical Items</h3>
+            <ul id="selected-medical-items"></ul>
+        </div>
+
+        <section id="alerts">
+            <h2>Real-Time Alerts</h2>
+            <div id="alert-message"></div>
+        </section>
+        <section id="education">
+            <h2>Emergency Preparedness Education</h2>
+            <h4>Learn about common emergencies and preventive actions.</h4>
+            <div style="display: flex; justify-content: space-between;">
+                <!-- Column 1: Disaster Emergencies -->
+                <div style="flex: 1; padding: 10px;">
+                    <h3>Disaster Emergencies</h3>
+                    <ul>
+                        <li><a href="https://www.nistglobal.com/fire-safety.php#:~:text=Fire%20safety%20training%20educates%20a,in%20any%20unanticipated%20fire%20breakout.">Fire Safety</a></li>
+                        <li><a href="https://www.ready.gov/earthquakes">Earthquake Preparedness</a></li>
+                        <li><a href="https://www.redcross.org/get-help/how-to-prepare-for-emergencies/types-of-emergencies/flood.html?srsltid=AfmBOopm4eoyzfBVutDzryVep9p3xC3Mmku_oUwuycZAXGZCPe5p1-aA">Flood Safety</a></li>
+                    </ul>
+                </div>
+            
+                <!-- Column 2: Medical Emergencies -->
+                <div style="flex: 1; padding: 10px; text-align: left;">
+                    <h3>Medical Emergencies</h3>
+                    <ul>
+                        <li><a href="https://www.betterhealth.vic.gov.au/health/conditionsandtreatments/first-aid-basics-and-drsabcd">First Aid Basics</a></li>
+                        <li><a href="https://www.medicalnewstoday.com/articles/324712">CPR Techniques</a></li>
+                        <li><a href="https://www.hopkinsmedicine.org/health/wellness-and-prevention/choking-first-aid">Choking Relief</a></li>
+                        <li><a href="https://www.rch.org.au/rchcpg/hospital_clinical_guideline_index/Wound_assessment_and_management/">Wound Care</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Column 3: Emergency Contact Buttons -->
+            <div style="flex: 1; width: 80%; padding: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                <h3>Emergency Contacts</h3>
+                <button style="transform: scale(1); transition: transform 0.2s;" 
+                        onclick="window.location.href='tel:102'" 
+                        onmouseover="this.style.transform='scale(1.2)'" 
+                        onmouseout="this.style.transform='scale(1)'">
+                    Call Ambulance (102)
+                </button>
+                <button style="transform: scale(1); transition: transform 0.2s; margin-top: 10px;" 
+                        onclick="window.location.href='tel:108'" 
+                        onmouseover="this.style.transform='scale(1.2)'" 
+                        onmouseout="this.style.transform='scale(1)'">
+                    Call Disaster Management (108)
+                </button>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Family Emergency Preparedness System</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
